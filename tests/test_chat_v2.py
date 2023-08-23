@@ -1,3 +1,8 @@
+
+"""
+Test module for chat_v2 function.
+"""
+
 import os
 import openai
 from grafana_openai_monitoring import monitor
@@ -16,12 +21,12 @@ openai.ChatCompletion.create = monitor.chat_v2(
 )
 
 # Now any call to openai.ChatCompletion.create will be automatically tracked
-response = openai.ChatCompletion.create(model="gpt-4", 
-                                        max_tokens=1, 
+response = openai.ChatCompletion.create(model="gpt-4",
+                                        max_tokens=1,
                                         messages=
                                             [
                                                 {
-                                                    "role": "user", 
+                                                    "role": "user",
                                                     "content": "What is Grafana?"
                                                 }
                                             ]
