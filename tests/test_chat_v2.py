@@ -1,12 +1,12 @@
-import openai
 import os
+import openai
 from grafana_openai_monitoring import monitor
 
 # Set your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Apply the custom decorator to the OpenAI API function
-openai.ChatCompletion.create = monitor.chatV2(
+openai.ChatCompletion.create = monitor.chat_v2(
     openai.ChatCompletion.create,
     metrics_url=os.getenv("PROMETHEUS_URL"),
     logs_url=os.getenv("LOKI_URL"),
@@ -16,7 +16,16 @@ openai.ChatCompletion.create = monitor.chatV2(
 )
 
 # Now any call to openai.ChatCompletion.create will be automatically tracked
-response = openai.ChatCompletion.create(model="gpt-4", max_tokens=1, messages=[{"role": "user", "content": "What is Grafana?"}])
+response = openai.ChatCompletion.create(model="gpt-4", 
+                                        max_tokens=1, 
+                                        messages=
+                                            [
+                                                {
+                                                    "role": "user", 
+                                                    "content": "What is Grafana?"
+                                                }
+                                            ]
+                                        )
 
 # Assert on the response status code
-assert response['status'] == 'success'
+assert response['object'] == 'chat.completion'
