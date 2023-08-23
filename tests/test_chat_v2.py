@@ -22,7 +22,7 @@ def test_chat_v2():
     - LOKI_USERNAME
     - GRAFANA_CLOUD_ACCESS_TOKEN
     """
-    
+
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     # Apply the custom decorator to the OpenAI API function
