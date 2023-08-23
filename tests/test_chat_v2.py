@@ -8,7 +8,21 @@ import openai
 from grafana_openai_monitoring import monitor
 
 def test_chat_v2():
-    # Set your OpenAI API key
+    """
+    Test the chat_v2 functionality with OpenAI API.
+
+    This test function sets up the OpenAI API with monitoring using the chat_v2 decorator,
+    sends a sample chat message, and asserts the response.
+
+    Make sure you have the required environment variables set:
+    - OPENAI_API_KEY
+    - PROMETHEUS_URL
+    - LOKI_URL
+    - PROMETHEUS_USERNAME
+    - LOKI_USERNAME
+    - GRAFANA_CLOUD_ACCESS_TOKEN
+    """
+    
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     # Apply the custom decorator to the OpenAI API function
@@ -32,5 +46,5 @@ def test_chat_v2():
                                                     }
                                                 ]
                                             )
-    
+
     assert response['object'] == 'chat.completion'
