@@ -19,7 +19,7 @@ from grafana_openai_monitoring import monitor
 openai.api_key = "YOUR_OPENAI_API_KEY"
 
 # Apply the custom decorator to the OpenAI API function
-openai.ChatCompletion.create = monitor.chatV2(
+openai.ChatCompletion.create = monitor.chat_v2(
     openai.ChatCompletion.create,
     metrics_url="YOUR_PROMETHEUS_METRICS_URL",  # Example: "https://prometheus.grafana.net/api/prom"
     logs_url="YOUR_LOKI_LOGS_URL",  # Example: "https://logs.example.com/loki/api/v1/push/"
