@@ -9,6 +9,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  PROMETHEUS_URL: ${{ secrets.PROMETHEUS_URL }}
+  LOKI_URL: ${{ secrets.LOKI_URL }}
+  PROMETHEUS_USERNAME: ${{ secrets.PROMETHEUS_USERNAME }}
+  LOKI_USERNAME: ${{ secrets.LOKI_USERNAME }}
+  GRAFANA_CLOUD_ACCESS_TOKEN: ${{ secrets.GRAFANA_CLOUD_ACCESS_TOKEN }}
+
 jobs:
   build:
 
