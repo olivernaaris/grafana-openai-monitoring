@@ -7,7 +7,7 @@ import os
 import openai
 from grafana_openai_monitoring import monitor
 
-def test():
+def test_chat_v2():
     # Set your OpenAI API key
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -22,7 +22,7 @@ def test():
     )
 
     # Now any call to openai.ChatCompletion.create will be automatically tracked
-    response = openai.ChatCompletion.create(model="gpt-4",
+    response = openai.ChatCompletion.create(model="gpt-3.5-turbo",
                                             max_tokens=1,
                                             messages=
                                                 [
