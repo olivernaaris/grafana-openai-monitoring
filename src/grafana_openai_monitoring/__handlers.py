@@ -54,9 +54,17 @@ def __calculate_cost(model, prompt_tokens, sampled_tokens):
     # Define the pricing information for different models
     prices = {
         "ada": (0.0004, 0.0004),
+        "text-ada-001": (0.0004, 0.0004),
         "babbage": (0.0005, 0.0005),
+        "babbage-002": (0.0005, 0.0005),
+        "text-babbage-001": (0.0005, 0.0005),
         "curie": (0.0020, 0.0020),
+        "text-curie-001": (0.0020, 0.0020),
         "davinci": (0.0200, 0.0200),
+        "davinci-002": (0.0200, 0.0200),
+        "text-davinci-001": (0.0200, 0.0200),
+        "text-davinci-002": (0.0200, 0.0200),
+        "text-davinci-003": (0.0200, 0.0200),
         "gpt-3.5-turbo": (0.002, 0.002),
         "gpt-3.5-turbo-16k": (0.003,0.004),
         "gpt-4": (0.03, 0.06),
