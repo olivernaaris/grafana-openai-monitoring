@@ -1,4 +1,4 @@
-
+# pylint: disable=R0801
 """
 Test module for chat_v1 function.
 """

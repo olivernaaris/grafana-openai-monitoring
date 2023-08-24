@@ -113,7 +113,7 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
             f'openai,integration=openai,'
             f'source=python_chatv1,model={response.model} '
             f'totalTokens={response.usage.total_tokens}',
-            
+
             # Metric to track the duration of the API request and response cycle
             f'openai,integration=openai,'
             f'source=python_chatv1,model={response.model} '
