@@ -23,7 +23,7 @@ jobs:
       
       - name: Create a new pyproject.toml
         run: |
-          cat >> pyproject.toml <<'EOF'
+          cat <<EOF > pyproject.toml
           [tool.poetry]
           name = "grafana-openai-monitoring"
           version = ${{ secrets.GITHUB_RUN_ATTEMPT }}-${{ secrets.GITHUB_REF_NAME }}
