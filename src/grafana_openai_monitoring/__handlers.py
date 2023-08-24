@@ -1,3 +1,24 @@
+"""
+Utility functions for handling cost calculation and metrics and logs sending.
+
+This module provides utility functions that are used to calculate the cost
+of OpenAI API usage based on the model and token usage, as well as sending metrics and logs
+to Grafana Cloud.
+
+Functions:
+    __check(metrics_url, logs_url, metrics_username, logs_username, access_token):
+        Check if all required arguments are provided and modify metrics and logs URLs
+    
+    __calculate_cost(model, prompt_tokens, sampled_tokens):
+        Calculate the cost based on the model, prompt tokens, and sampled tokens.
+
+    __send_metrics(metrics_url, metrics_username, access_token, metrics):
+        Send metrics to the specified Prometheus URL.
+    
+    __send_logs(logs_url, metrics_username, access_token, metrics):
+        Send logs to the specified Loki URL.
+"""
+
 import requests
 
 # Function to check if all required arguments are provided and modify metrics and logs URLs
