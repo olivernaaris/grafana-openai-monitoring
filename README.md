@@ -50,7 +50,7 @@ print(response)
 
 ### Completions
 
-To monitor ompletions using the OpenAI API, you can use the `chat_v1.monitor` decorator.. This decorator adds monitoring capabilities to the OpenAI API function and sends metrics and logs to the specified Grafana Cloud endpoints.
+To monitor ompletions using the OpenAI API, you can use the `chat_v1.monitor` decorator. This decorator adds monitoring capabilities to the OpenAI API function and sends metrics and logs to the specified Grafana Cloud endpoints.
 
 Here's how to apply it:
 
