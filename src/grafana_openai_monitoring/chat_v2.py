@@ -8,7 +8,7 @@ API usage and responses.
 """
 
 import time
-from .handlers import __send_metrics, __send_logs, __calculate_cost, __check
+from .__handlers import __send_metrics, __send_logs, __calculate_cost, __check
 
 # Decorator function to monitor chat completion
 def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access_token): # pylint: disable=too-many-arguments
