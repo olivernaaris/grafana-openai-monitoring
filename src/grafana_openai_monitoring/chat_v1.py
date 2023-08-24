@@ -100,28 +100,28 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
         metrics = [
             # Metric to track the number of completion tokens used in the response
             f'openai,integration=openai,'
-            f'source=python,model={response.model} '
+            f'source=python_chatv1,model={response.model} '
             f'completionTokens={response.usage.completion_tokens}',
 
             # Metric to track the number of prompt tokens used in the response
             f'openai,integration=openai,'
-            f'source=python,model={response.model} '
+            f'source=python_chatv1,model={response.model} '
             f'promptTokens={response.usage.prompt_tokens}',
 
             # Metric to track the total number of tokens used in the response
             f'openai,integration=openai,'
-            f'source=python,model={response.model} '
+            f'source=python_chatv1,model={response.model} '
             f'totalTokens={response.usage.total_tokens}',
+            
+            # Metric to track the duration of the API request and response cycle
+            f'openai,integration=openai,'
+            f'source=python_chatv1,model={response.model} '
+            f'requestDuration={duration}',
 
             # Metric to track the usage cost based on the model and token usage
             f'openai,integration=openai,'
-            f'source=python,model={response.model} '
+            f'source=python_chatv1,model={response.model} '
             f'usageCost={cost}',
-
-            # Metric to track the duration of the API request and response cycle
-            f'openai,integration=openai,'
-            f'source=python,model={response.model} '
-            f'requestDuration={duration}',
         ]
 
 
