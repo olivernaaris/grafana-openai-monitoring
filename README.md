@@ -22,6 +22,10 @@ The following tables shows which OpenAI function correspons to which monitoing f
 
 ### ChatCompletions
 
+To monitor chat completions using the OpenAI API, you can use the `chat_v2.monitor` decorator. This decorator automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
+
+Here's how to set it up:
+
 ```python
 import openai
 from grafana_openai_monitoring import chat_v2
@@ -45,6 +49,10 @@ print(response)
 ```
 
 ### Completions
+
+To monitor ompletions using the OpenAI API, you can use the `chat_v1.monitor` decorator.. This decorator adds monitoring capabilities to the OpenAI API function and sends metrics and logs to the specified Grafana Cloud endpoints.
+
+Here's how to apply it:
 
 ```python
 import openai
@@ -90,4 +98,4 @@ requests
 time
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICESNSE.txt) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) for details.
