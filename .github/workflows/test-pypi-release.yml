@@ -26,7 +26,7 @@ jobs:
           cat <<EOF > pyproject.toml
           [tool.poetry]
           name = "grafana-openai-monitoring"
-          version = ${{ secrets.GITHUB_RUN_ATTEMPT }}
+          version = "${{ secrets.GITHUB_RUN_ATTEMPT }}"
           description = "Library to monitor your OpenAI usage and send metrics and logs to Grafana Cloud"
           authors = ["Ishan Jain <ishan.jain@grafana.com>"]
           repository = "https://github.com/grafana/grafana-openai-monitoring"
@@ -43,6 +43,9 @@ jobs:
           requires = ["poetry-core>=1.1.0"]
           build-backend = "poetry.core.masonry.api"
           EOF
+      
+      - name: test
+        run: cat pyproject.toml
       
       - name: Run build
         run: python -m build 
