@@ -15,13 +15,13 @@ pip install grafana-openai-monitoring
 
 ```python
 import openai
-from grafana_openai_monitoring import monitor
+from grafana_openai_monitoring import chat_v2
 
 # Set your OpenAI API key
 openai.api_key = "YOUR_OPENAI_API_KEY"
 
 # Apply the custom decorator to the OpenAI API function
-openai.ChatCompletion.create = monitor.chat_v2(
+openai.ChatCompletion.create = chat_v2.monitor(
     openai.ChatCompletion.create,
     metrics_url="YOUR_PROMETHEUS_METRICS_URL",  # Example: "https://prometheus.grafana.net/api/prom"
     logs_url="YOUR_LOKI_LOGS_URL",  # Example: "https://logs.example.com/loki/api/v1/push/"
