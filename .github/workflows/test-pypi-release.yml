@@ -26,7 +26,7 @@ jobs:
           cat <<EOF > pyproject.toml
           [tool.poetry]
           name = "grafana-openai-monitoring"
-          version = "${{ github.run_number }}${{ github.ref_name }}"
+          version = "1.0.0-${{ github.ref_name }}.${{ github.run_number }}"
           description = "Library to monitor your OpenAI usage and send metrics and logs to Grafana Cloud"
           authors = ["Ishan Jain <ishan.jain@grafana.com>"]
           repository = "https://github.com/grafana/grafana-openai-monitoring"
