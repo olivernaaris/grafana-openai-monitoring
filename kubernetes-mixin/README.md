@@ -14,7 +14,7 @@ and the following alerts:
 - LongRequestDuration
 - HighUsageCost
 
-## ArgoCD Dashboard Overview
+## OpenAI Monitoring Dashboard Overview
 OpenAI Monitoring dashbaord provides details on the overall status of the OpenAI Usage including the average cost and model usage. The dashboard includes visualizations to track average requests duration along with token usage.
 
 #TODO screenshots
