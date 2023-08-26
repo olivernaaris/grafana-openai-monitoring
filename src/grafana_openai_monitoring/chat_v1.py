@@ -101,7 +101,7 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
         metrics = [
             # Metric to track the number of completion tokens used in the response
             f'openai,job=integrations/openai,'
-            f'source=python_chatv1, model={response.model} '
+            f'source=python_chatv1,model={response.model} '
             f'completionTokens={response.usage.completion_tokens}',
 
             # Metric to track the number of prompt tokens used in the response
