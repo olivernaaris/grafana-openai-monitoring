@@ -7,7 +7,7 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: High completion tokens usage
+          summary: High completion tokens usage.
           description: |
             High completion tokens usage for {{ $labels.model }} model.
             Current value: {{ $value }}
@@ -18,7 +18,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: High prompt tokens usage
+          summary: High prompt tokens usage.
           description: |
             High prompt tokens usage for {{ $labels.model }} model.
             Current value: {{ $value }}
@@ -29,7 +29,7 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: High total tokens usage
+          summary: High total tokens usage.
           description: |
             High total tokens usage for {{ $labels.model }} model.
             Current value: {{ $value }}
@@ -40,7 +40,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: Long request duration
+          summary: Long request duration.
           description: |
             Long request duration for {{ $labels.model }} model.
             Current value: {{ $value }} seconds
@@ -51,7 +51,7 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: High usage cost
+          summary: High usage cost.
           description: |
             High usage cost for {{ $labels.model }} model.
             Current value: {{ $value }}
