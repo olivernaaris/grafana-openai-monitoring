@@ -70,7 +70,7 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
             "streams": [
             {
                     "stream": {
-                        "integration": "openai", 
+                        "job": "integrations/openai", 
                         "prompt": prompt, 
                         "model": response.model, 
                         "role": response["choices"][0]['message']["role"],
@@ -100,27 +100,27 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
         # Prepare metrics to be sent
         metrics = [
             # Metric to track the number of completion tokens used in the response
-            f'openai,integration=openai,'
+            f'openai,job=integrations/openai,'
             f'source=python_chatv2,model={response.model} '
             f'completionTokens={response.usage.completion_tokens}',
 
             # Metric to track the number of prompt tokens used in the response
-            f'openai,integration=openai,'
+            f'openai,job=integrations/openai,'
             f'source=python_chatv2,model={response.model} '
             f'promptTokens={response.usage.prompt_tokens}',
 
             # Metric to track the total number of tokens used in the response
-            f'openai,integration=openai,'
+            f'openai,job=integrations/openai,'
             f'source=python_chatv2,model={response.model} '
             f'totalTokens={response.usage.total_tokens}',
 
             # Metric to track the usage cost based on the model and token usage
-            f'openai,integration=openai,'
+            f'openai,job=integrations/openai,'
             f'source=python_chatv2,model={response.model} '
             f'usageCost={cost}',
 
             # Metric to track the duration of the API request and response cycle
-            f'openai,integration=openai,'
+            f'openai,job=integrations/openai,'
             f'source=python_chatv2,model={response.model} '
             f'requestDuration={duration}',
         ]
