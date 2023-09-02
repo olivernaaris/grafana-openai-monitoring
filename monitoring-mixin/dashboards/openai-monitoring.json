@@ -129,7 +129,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-GrYlRd"
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -141,7 +141,7 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 2
               }
             ]
           },
@@ -284,10 +284,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -351,6 +347,7 @@
             "mode": "continuous-BlPu"
           },
           "mappings": [],
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -360,7 +357,7 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 4047
               }
             ]
           },
@@ -433,7 +430,7 @@
               },
               {
                 "color": "red",
-                "value": 80
+                "value": 4047
               }
             ]
           },
@@ -1322,7 +1319,7 @@
         "current": {
           "selected": true,
           "text": [
-            "grafanacloud-openai-prom"
+            "grafanacloud-ishanjain-prom"
           ],
           "value": [
             "grafanacloud-prom"
@@ -1383,6 +1380,6 @@
   "timezone": "",
   "title": "OpenAI Monitoring",
   "uid": "ebd58eb6-f2f8-481e-aa6c-bc02387821c7",
-  "version": 4,
+  "version": 2,
   "weekStart": ""
 }
