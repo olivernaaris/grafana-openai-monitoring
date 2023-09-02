@@ -37,7 +37,7 @@ def test_chat_v2():
 
     # Now any call to openai.ChatCompletion.create will be automatically tracked
     response = openai.ChatCompletion.create(model="gpt-3.5-turbo",
-                                            max_tokens=1,
+                                            max_tokens=100,
                                             messages=
                                                 [
                                                     {
