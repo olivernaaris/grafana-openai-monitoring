@@ -40,7 +40,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "# ![openai](https://github.com/grafana/grafana-openai-monitoring/blob/main/assets/openai-logo-white.png?raw=true)",
+        "content": "# ![openai](https://github.com/grafana/grafana-openai-monitoring/blob/main/assets/openai-logo-black.png?raw=true)",
         "mode": "markdown"
       },
       "pluginVersion": "10.2.0-59981",
@@ -105,7 +105,7 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "code",
+          "editorMode": "builder",
           "expr": "sum by(job) (count_over_time(openai_promptTokens{job=~\"$job\"}[$__range]))",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -178,8 +178,8 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "avg by(job) (sum_over_time(openai_requestDuration{job=~\"$job\"}[$__range]))",
+          "editorMode": "builder",
+          "expr": "avg by(job) (openai_requestDuration{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -252,7 +252,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "avg by(job) (sum_over_time(openai_totalTokens{job=~\"$job\"}[$__range]))",
+          "expr": "avg by(job) (openai_totalTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -325,7 +325,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "avg by(job) (sum_over_time(openai_usageCost{job=~\"$job\"}[$__range]))",
+          "expr": "avg by(job) (openai_usageCost{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -398,7 +398,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "avg by(job) (sum_over_time(openai_completionTokens{job=~\"$job\"}[$__range]))",
+          "expr": "avg by(job) (openai_completionTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -471,7 +471,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "avg by(job) (sum_over_time(openai_promptTokens{job=~\"$job\"}[$__range]))",
+          "expr": "avg by(job) (openai_promptTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -546,7 +546,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "topk by(model) (5, count_over_time(openai_completionTokens{job=~\"$job\"}[1h]))",
+          "expr": "topk by(model) (5, count_over_time(openai_completionTokens{job=~\"$job\"}[$__range]))",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -652,7 +652,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "topk by(model) (5, count_over_time(openai_completionTokens{job=~\"$job\"}[1h]))",
+          "expr": "topk by(model) (5, count_over_time(openai_completionTokens{job=~\"$job\"}[$__range]))",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -756,7 +756,7 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "avg by(job) (openai_totalTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -857,7 +857,7 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "sum by(model) (openai_totalTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -1067,7 +1067,7 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "avg by(job) (openai_completionTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -1376,13 +1376,13 @@
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "OpenAI Monitoring",
   "uid": "ebd58eb6-f2f8-481e-aa6c-bc02387821c7",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
