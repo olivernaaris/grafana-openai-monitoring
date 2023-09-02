@@ -49,7 +49,7 @@ openai.ChatCompletion.create = chat_v2.monitor(
 )
 
 # Now any call to openai.ChatCompletion.create will be automatically tracked
-response = openai.ChatCompletion.create(model="gpt-4", max_tokens=1, messages=[{"role": "user", "content": "What is Grafana?"}])
+response = openai.ChatCompletion.create(model="gpt-4", max_tokens=100, messages=[{"role": "user", "content": "What is Grafana?"}])
 print(response)
 ```
 
@@ -77,7 +77,7 @@ openai.Completion.create = chat_v1.monitor(
 )
 
 # Now any call to openai.Completion.create will be automatically tracked
-response = openai.Completion.create(model="gpt-4", max_tokens=1, prompt="What is Grafana?")
+response = openai.Completion.create(model="davinci", max_tokens=100, prompt="Isn't Grafana the best?")
 print(response)
 ```
 
