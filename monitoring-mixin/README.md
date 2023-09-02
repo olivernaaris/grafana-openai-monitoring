@@ -20,11 +20,40 @@ OpenAI Monitoring dashbaord provides details on the overall status of the OpenAI
 #TODO screenshots
 
 ## Alerts Overview
-- HighCompletionTokensUsage: Alert for high completion tokens usage.
-- HighPromptTokensUsage: Alert for high prompt tokens usage.
-- HighTotalTokensUsage: Alert for high total tokens usage.
-- LongRequestDuration: Alert for long request duration.
-- HighUsageCost: Alert for high usage cost
+1. HighCompletionTokensUsage:
+
+- Threshold: sum by (model) (openai_completionTokens) > 10000
+- Description: This alert will trigger if the sum of openai_completionTokens exceeds 10,000 over a 5-minute window.
+- Severity: Critical
+- Use Case: This alert is for a critical condition where excessive completion token usage is detected. 
+
+2. HighPromptTokensUsage:
+
+- Threshold: sum by (model) (openai_promptTokens) > 5000
+- Description: This alert will trigger if the sum of openai_promptTokens exceeds 5,000 over a 5-minute window.
+- Severity: Warning
+- Use Case: This alert is for a warning condition indicating elevated prompt token usage.
+
+3. HighTotalTokensUsage:
+
+- Threshold: sum by (model) (openai_totalTokens) > 15000
+- Description: This alert will trigger if the sum of openai_totalTokens exceeds 15,000 over a 5-minute window.
+- Severity: Critical
+- Use Case: This alert is for critical situations when the total token usage is deemed too high. 
+
+4. LongRequestDuration:
+
+- Threshold: max by (model) (openai_requestDuration) > 2
+- Description: This alert will trigger if the maximum request duration for any model exceeds 2 seconds over a 2-minute window.
+- Severity: Warning
+- Use Case: This alert is for warning about unusually long request durations. 
+
+5. HighUsageCost:
+
+- Threshold: sum by (model) (openai_usageCost) > 100
+- Description: This alert will trigger if the sum of openai_usageCost exceeds 100 over a 5-minute window.
+- Severity: Critical
+- Use Case: This alert is for critical cost-related issues.
 
 ## Tools
 To use them, you need to have `mixtool` and `jsonnetfmt` installed. If you have a working Go development environment, it's easiest to run the following:
