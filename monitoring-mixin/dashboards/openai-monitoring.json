@@ -755,12 +755,16 @@
             "type": "prometheus",
             "uid": "$datasource"
           },
-          "editorMode": "code",
-          "expr": "openai_totalTokens{job=~\"$job\"}",
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "avg by(job) (openai_totalTokens{job=~\"$job\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Total Tokens",
@@ -1063,8 +1067,8 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "openai_completionTokens{job=~\"$job\"}",
+          "editorMode": "builder",
+          "expr": "avg by(job) (openai_completionTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -1164,8 +1168,8 @@
             "uid": "$datasource"
           },
           "disableTextWrap": false,
-          "editorMode": "code",
-          "expr": "openai_promptTokens{job=~\"$job\"}",
+          "editorMode": "builder",
+          "expr": "avg by(job) (openai_promptTokens{job=~\"$job\"})",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -1316,7 +1320,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "grafanacloud-openai-prom"
           ],
@@ -1340,7 +1344,7 @@
       {
         "allValue": ".+",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "integrations/openai"
           ],
@@ -1379,6 +1383,6 @@
   "timezone": "",
   "title": "OpenAI Monitoring",
   "uid": "ebd58eb6-f2f8-481e-aa6c-bc02387821c7",
-  "version": 11,
+  "version": 2,
   "weekStart": ""
 }
