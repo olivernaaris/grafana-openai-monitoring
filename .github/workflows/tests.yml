@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
   schedule:
-    - cron: '*/2 * * * *'
+    - cron: '*/180 * * * *'
 
 env:
   PROMETHEUS_URL: ${{ secrets.PROMETHEUS_URL }}
