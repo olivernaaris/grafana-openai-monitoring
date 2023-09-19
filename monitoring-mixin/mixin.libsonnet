@@ -1,6 +1,6 @@
 {
   grafanaDashboards: {
-    'argocd-overview.json': (import 'dashboards/openai-monitoring.json'),
+    'openai-monitoring.json': (import 'dashboards/openai-monitoring.json'),
   },
 
   // Helper function to ensure that we don't override other rules, by forcing
