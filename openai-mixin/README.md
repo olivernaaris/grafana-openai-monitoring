@@ -17,7 +17,8 @@ and the following alerts:
 ## OpenAI Monitoring Dashboard Overview
 OpenAI Monitoring dashbaord provides details on the overall status of the OpenAI Usage including the average cost and model usage. The dashboard includes visualizations to track average requests duration along with token usage.
 
-#TODO screenshots
+![Dashboard_1](https://storage.googleapis.com/grafanalabs-integration-assets/openai/screenshots/openai_monitoring_1.png)
+![Dashboard_2](https://storage.googleapis.com/grafanalabs-integration-assets/openai/screenshots/openai_monitoring_2.png)
 
 ## Alerts Overview
 1. HighCompletionTokensUsage:
