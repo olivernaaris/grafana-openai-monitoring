@@ -27,7 +27,7 @@ The following tables shows which OpenAI function correspons to which monitoing f
 
 ### ChatCompletions
 
-To monitor chat completions using the OpenAI API, you can use the `chat_v2.monitor` decorator. This decorator automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
+To monitor ChatCompletions using the OpenAI API, you can use the `chat_v2.monitor` decorator. This decorator automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
 
 Here's how to set it up:
 
@@ -55,7 +55,7 @@ print(response)
 
 ### Completions
 
-To monitor ompletions using the OpenAI API, you can use the `chat_v1.monitor` decorator. This decorator adds monitoring capabilities to the OpenAI API function and sends metrics and logs to the specified Grafana Cloud endpoints.
+To monitor completions using the OpenAI API, you can use the `chat_v1.monitor` decorator. This decorator adds monitoring capabilities to the OpenAI API function and sends metrics and logs to the specified Grafana Cloud endpoints.
 
 Here's how to apply it:
 
@@ -85,7 +85,7 @@ print(response)
 To use the grafana-openai-monitoring library effectively, you need to provide the following information:
 
 - **YOUR_OPENAI_API_KEY**: Replace this with your actual OpenAI API key.
-- **YOUR_PROMETHEUS_METRICS_URL**: Replace with the URL with your Prometheus URL.
+- **YOUR_PROMETHEUS_METRICS_URL**: Replace the URL with your Prometheus URL.
 - **YOUR_LOKI_LOGS_URL**: Replace with the URL where you want to send Loki logs.
 - **YOUR_METRICS_USERNAME**: Replace with the username for Prometheus.
 - **YOUR_LOGS_USERNAME**: Replace with the username for Loki.
