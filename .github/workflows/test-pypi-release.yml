@@ -9,6 +9,11 @@ on:
 permissions:
   contents: read
 
+defaults:
+  run:
+    working-directory: ./python
+
+
 jobs:
   build-and-publish-test-pypi:
     name: Test PyPI

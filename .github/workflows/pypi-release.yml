@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    working-directory: ./python
+
 jobs:
   publish:
     name: Publish Package to PYPI
