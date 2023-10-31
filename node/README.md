@@ -111,7 +111,7 @@ After configuring the parameters, the monitored API function will automatically 
 Node.js version 16 and above
 
 ## Dependencies
-- [OpenAI](https://pypi.org/project/openai/)
+- [OpenAI](https://www.npmjs.com/package/openai)
 
 ## License
 This project is licensed under the  GPL-3.0 license - see the [LICENSE](LICENSE.txt) for details.
