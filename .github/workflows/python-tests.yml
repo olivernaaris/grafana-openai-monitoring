@@ -12,6 +12,10 @@ on:
   schedule:
     - cron: '*/180 * * * *'
 
+defaults:
+  run:
+    working-directory: ./python
+
 env:
   PROMETHEUS_URL: ${{ secrets.PROMETHEUS_URL }}
   LOKI_URL: ${{ secrets.LOKI_URL }}
@@ -23,9 +27,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./python
     strategy:
       fail-fast: false
       matrix:

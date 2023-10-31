@@ -9,6 +9,10 @@ on:
   schedule:
     - cron: '*/180 * * * *'
 
+defaults:
+  run:
+    working-directory: node
+
 env:
   METRICS_URL: ${{ secrets.PROMETHEUS_URL }}
   LOGS_URL: ${{ secrets.LOKI_URL }}
@@ -20,9 +24,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: node
     strategy:
       fail-fast: false
       matrix:
