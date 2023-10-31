@@ -2,6 +2,10 @@ name: NPM Release
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number to release'
+        required: true
 
 permissions:
   contents: write
