@@ -12,11 +12,11 @@ describe('chat_v2 Test', () => {
     });
 
     const monitoringOptions = {
-      metrics_url: 'YOUR_PROMETHEUS_METRICS_URL',
-      logs_url: 'YOUR_LOKI_LOGS_URL',
-      metrics_username: 'YOUR_METRICS_USERNAME',
-      logs_username: 'YOUR_LOGS_USERNAME',
-      access_token: 'YOUR_ACCESS_TOKEN',
+      metrics_url: process.env.METRICS_URL,
+      logs_url: process.env.LOGS_URL,
+      metrics_username: process.env.METRICS_USERNAME,
+      logs_username: process.env.LOGS_USERNAME,
+      access_token: process.env.ACCESS_TOKEN,
     };
 
     // Use dynamic import to import the ES module and call the function
