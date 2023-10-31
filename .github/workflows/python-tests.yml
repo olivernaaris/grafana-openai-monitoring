@@ -20,14 +20,12 @@ env:
   GRAFANA_CLOUD_ACCESS_TOKEN: ${{ secrets.GRAFANA_CLOUD_ACCESS_TOKEN }}
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
-defaults:
-  run:
-    working-directory: ./python
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python
     strategy:
       fail-fast: false
       matrix:

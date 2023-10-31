@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./node
+        working-directory: node
     strategy:
       fail-fast: false
       matrix:

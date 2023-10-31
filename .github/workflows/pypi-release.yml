@@ -10,14 +10,13 @@ on:
 permissions:
   contents: write
 
-defaults:
-  run:
-    working-directory: ./python
-
 jobs:
   publish:
     name: Publish Package to PYPI
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python
 
     steps:
     - uses: actions/checkout@v3
@@ -66,6 +65,9 @@ jobs:
   release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python
     needs: [publish]
     steps:
       - name: Checkout

@@ -17,6 +17,10 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./node
+    
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -28,6 +32,9 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./node
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -42,6 +49,9 @@ jobs:
   release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./node
     needs: [publish]
     steps:
       - name: Checkout

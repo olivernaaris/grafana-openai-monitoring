@@ -8,13 +8,12 @@ on:
   schedule:
     - cron: '0 6 * * *'
 
-defaults:
-  run:
-    working-directory: ./python
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
