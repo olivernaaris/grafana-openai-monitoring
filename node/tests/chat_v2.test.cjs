@@ -12,11 +12,11 @@ describe('chat_v2 Test', () => {
     });
 
     const monitoringOptions = {
-        metrics_url: 'https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom',
-        logs_url: 'https://logs-prod-006.grafana.net/loki/api/v1/push',
-        metrics_username: 1255165,
-        logs_username: 726628,
-        access_token: 'glc_eyJvIjoiNjUyOTkyIiwibiI6InN0YWNrLTc3MzYzMi1pbnRlZ3JhdGlvbi1pc2hhbmFhIiwiayI6Ilk1NXV0OHFMZzg3QVMyUTUyNnZYTVcxbiIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19',
+      metrics_url: 'YOUR_PROMETHEUS_METRICS_URL',
+      logs_url: 'YOUR_LOKI_LOGS_URL',
+      metrics_username: 'YOUR_METRICS_USERNAME',
+      logs_username: 'YOUR_LOGS_USERNAME',
+      access_token: 'YOUR_ACCESS_TOKEN',
     };
 
     // Use dynamic import to import the ES module and call the function
