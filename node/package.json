@@ -4,7 +4,7 @@
   "description": "Package to monitor your OpenAI usage and send metrics and logs to Grafana Cloud",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/**/*.test.cjs"
   },
   "type": "module",
   "repository": {
@@ -25,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/grafana/grafana-openai-monitoring/issues"
   },
-  "homepage": "https://github.com/grafana/grafana-openai-monitoring/node#readme"
+  "homepage": "https://github.com/grafana/grafana-openai-monitoring/node#readme",
+  "dependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "openai": "^4.14.2"
+  }
 }

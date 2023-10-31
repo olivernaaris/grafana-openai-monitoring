@@ -101,4 +101,4 @@ Python 3.7.1 and above
 - [requests](https://pypi.org/project/requests/)
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) for details.
+This project is licensed under the GNU License - see the [LICENSE](LICENSE.txt) for details.
