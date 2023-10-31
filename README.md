@@ -1,4 +1,5 @@
 # OpenAI Monitoring: Monitor OpenAI API Usage with Grafana Cloud
+
 [![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?&logo=grafana&logoColor=white)](https://grafana.com)
 [![GitHub tag](https://img.shields.io/github/tag/grafana/grafana-openai-monitoring.svg)](https://github.com/grafana/grafana-openai-monitoring/tags)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/grafana/grafana-openai-monitoring)](https://github.com/grafana/grafana-openai-monitoring/tags)
@@ -6,10 +7,19 @@
 
 [![Tests](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/tests.yml)
 
-`grafana-openai-monitoring` is an NPM Package that provides a way to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to **Grafana Cloud**, allowing you to track and analyze OpenAI API usage and responses.
+`grafana-openai-monitoring` is a set of libraries for both Python and JavaScript that provides decorators and functions to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to **Grafana Cloud**, allowing you to track and analyze OpenAI API usage and responses.
 
 ## Installation
-You can install grafana-openai-monitoring using npm:
+
+### Python Library
+You can install the Python library using pip:
+
+```bash
+pip install grafana-openai-monitoring
+```
+
+### NPM Package
+You can install the JavaScript library using npm:
 
 ```bash
 npm install grafana-openai-monitoring
@@ -17,16 +27,35 @@ npm install grafana-openai-monitoring
 
 ## Usage
 
-The following tables shows which OpenAI function correspons to which monitoing function in this library
+### Python
+The Python library provides decorators to monitor chat completions and Completions endpoints of the OpenAI API. It automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
 
-| OpenAI Function                 | Monitoring Function |
-|---------------------------------|---------------------|
-| openai.ChatCompletion.create	  | chat_v2.monitor    |
-| openai.Completion.create	      | chat_v1.monitor    |
+Here's how to set it up:
 
-### ChatCompletions
+```python
+import openai
+from grafana_openai_monitoring import chat_v2
 
-To monitor ChatCompletions using the OpenAI API, you can use the `chat_v2.monitor` decorator. This decorator automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
+# Set your OpenAI API key
+openai.api_key = "YOUR_OPENAI_API_KEY"
+
+# Apply the custom decorator to the OpenAI API function
+openai.ChatCompletion.create = chat_v2.monitor(
+    openai.ChatCompletion.create,
+    metrics_url="YOUR_PROMETHEUS_METRICS_URL",
+    logs_url="YOUR_LOKI_LOGS_URL",
+    metrics_username="YOUR_METRICS_USERNAME",
+    logs_username="YOUR_LOGS_USERNAME",
+    access_token="YOUR_ACCESS_TOKEN"
+)
+
+# Now any call to openai.ChatCompletion.create will be automatically tracked
+response = openai.ChatCompletion.create(model="gpt-4", max_tokens=100, messages=[{"role": "user", "content": "What is Grafana?"}])
+print(response)
+```
+
+## JavaScript
+The NPM Package provides functions to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to the specified Grafana Cloud endpoints.
 
 Here's how to set it up:
 
@@ -46,7 +75,6 @@ const monitoringOptions = {
   access_token: 'YOUR_ACCESS_TOKEN',
 };
 
-// Patch method
 chat_v2.monitor(openai, monitoringOptions);
 
 // Now any call to openai.ChatCompletion.create will be automatically tracked
@@ -55,44 +83,6 @@ async function main() {
     model: 'gpt-4',
     max_tokens: 100,
     messages: [{ role: 'user', content: 'What is Grafana?' }],
-  });
-  console.log(completion);
-}
-
-main();
-```
-
-### Completions
-
-To monitor completions using the OpenAI API, you can use the `chat_v1.monitor` decorator. This decorator adds monitoring capabilities to the OpenAI API function and sends metrics and logs to the specified Grafana Cloud endpoints.
-
-Here's how to apply it:
-
-```javascript
-import OpenAI from 'openai';
-import { chat_v1 } from 'grafana-openai-monitoring';
-
-const openai = a new OpenAI({
-  apiKey: 'YOUR_OPENAI_API_KEY',
-});
-
-const monitoringOptions = {
-  metrics_url: 'YOUR_PROMETHEUS_METRICS_URL',
-  logs_url: 'YOUR_LOKI_LOGS_URL',
-  metrics_username: 'YOUR_METRICS_USERNAME',
-  logs_username: 'YOUR_LOGS_USERNAME',
-  access_token: 'YOUR_ACCESS_TOKEN',
-};
-
-// Patch method
-chat_v1.monitor(openai, monitoringOptions);
-
-// Now any call to openai.Completion.create will be automatically tracked
-async function main() {
-  const completion = await openai.completions.create({
-    model: 'davinci',
-    max_tokens: 100,
-    prompt: 'Isn\'t Grafana the best?',
   });
   console.log(completion);
 }
@@ -113,10 +103,9 @@ To use the grafana-openai-monitoring library effectively, you need to provide th
 After configuring the parameters, the monitored API function will automatically log and track the requests and responses to the specified endpoints.
 
 ## Compatibility
-Node.js version 16 and above
-
-## Dependencies
-- [OpenAI](https://pypi.org/project/openai/)
+- Python Library: Python 3.7.1 and above
+- NPM Package: Node.js version 16 and above
 
 ## License
-This project is licensed under the GNU License - see the [LICENSE](LICENSE.txt) for details.
+Both libraries are licensed under the GPL License. See the LICENSE files for details.
+
