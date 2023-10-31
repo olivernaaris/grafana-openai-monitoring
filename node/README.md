@@ -37,16 +37,14 @@ const openai = new OpenAI({
   apiKey: 'YOUR_OPENAI_API_KEY',
 });
 
-const monitoringOptions = {
+// Patch method
+chat_v2.monitor(openai, {
   metrics_url: 'YOUR_PROMETHEUS_METRICS_URL',
   logs_url: 'YOUR_LOKI_LOGS_URL',
   metrics_username: 'YOUR_METRICS_USERNAME',
   logs_username: 'YOUR_LOGS_USERNAME',
   access_token: 'YOUR_ACCESS_TOKEN',
-};
-
-// Patch method
-chat_v2.monitor(openai, monitoringOptions);
+});
 
 // Now any call to openai.ChatCompletion.create will be automatically tracked
 async function main() {
@@ -75,16 +73,14 @@ const openai = a new OpenAI({
   apiKey: 'YOUR_OPENAI_API_KEY',
 });
 
-const monitoringOptions = {
+// Patch method
+chat_v1.monitor(openai, {
   metrics_url: 'YOUR_PROMETHEUS_METRICS_URL',
   logs_url: 'YOUR_LOKI_LOGS_URL',
   metrics_username: 'YOUR_METRICS_USERNAME',
   logs_username: 'YOUR_LOGS_USERNAME',
   access_token: 'YOUR_ACCESS_TOKEN',
-};
-
-// Patch method
-chat_v1.monitor(openai, monitoringOptions);
+});
 
 // Now any call to openai.Completion.create will be automatically tracked
 async function main() {
