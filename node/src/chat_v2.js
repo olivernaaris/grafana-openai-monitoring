@@ -9,12 +9,12 @@ export default function monitor_v2(openai, options = {}) {
     logs_username,
     access_token,
   } = options;
-  
+
   const validatedURL = check(metrics_url, logs_url, metrics_username, logs_username, access_token)
 
   // Save original method
   const originalMethod = openai.chat.completions.create;
-  
+
   // Define wrapped method
   openai.chat.completions.create = async function(params) {
     const start = performance.now();
@@ -22,7 +22,7 @@ export default function monitor_v2(openai, options = {}) {
     const response = await originalMethod.call(this, params);
     const end = performance.now();
     const duration = end - start;
-    
+
     // Calculate the cost based on the response's usage
     const cost = calculateCost(params.model, response.usage.prompt_tokens, response.usage.completion_tokens);
 
@@ -49,24 +49,24 @@ export default function monitor_v2(openai, options = {}) {
         },
       ],
     };
-    
+
     // Send logs to the specified logs URL
     sendLogs(logs_url, logs_username, access_token, logs);
-    
+
     // Prepare metrics to be sent
     const metrics = [
       // Metric to track the number of completion tokens used in the response
       `openai,job=integrations/openai,source=node_chatv2,model=${response.model} completionTokens=${response.usage.completion_tokens}`,
-    
+
       // Metric to track the number of prompt tokens used in the response
       `openai,job=integrations/openai,source=node_chatv2,model=${response.model} promptTokens=${response.usage.prompt_tokens}`,
-    
+
       // Metric to track the total number of tokens used in the response
       `openai,job=integrations/openai,source=node_chatv2,model=${response.model} totalTokens=${response.usage.total_tokens}`,
-    
+
       // Metric to track the duration of the API request and response cycle
       `openai,job=integrations/openai,source=node_chatv2,model=${response.model} requestDuration=${duration}`,
-    
+
       // Metric to track the usage cost based on the model and token usage
       `openai,job=integrations/openai,source=node_chatv2,model=${response.model} usageCost=${cost}`,
     ];
@@ -75,11 +75,8 @@ export default function monitor_v2(openai, options = {}) {
     .catch((error) => {
       console.error(error.message);
     });
-    
 
     // Return original response
     return response;
-
   };
-
 }

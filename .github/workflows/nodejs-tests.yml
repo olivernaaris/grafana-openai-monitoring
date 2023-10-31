@@ -36,7 +36,7 @@ jobs:
       id: changed-files-specific
       uses: tj-actions/changed-files@v40
       with:
-        files: node/ 
+        files: node/**
 
     - name: Use Node.js ${{ matrix.node-version }}
       if: steps.changed-files-specific.outputs.any_changed == 'true'

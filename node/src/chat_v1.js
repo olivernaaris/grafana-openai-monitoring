@@ -22,10 +22,10 @@ export default function monitor_v1(openai, options = {}) {
     const response = await originalCreate.call(this, params);
     const end = performance.now();
     const duration = end - start;
-    
+
     // Calculate the cost based on the response's usage
     const cost = calculateCost(params.model, response.usage.prompt_tokens, response.usage.completion_tokens);
-    
+
     // Prepare logs to be sent
     const logs = {
       streams: [
@@ -48,7 +48,7 @@ export default function monitor_v1(openai, options = {}) {
         },
       ],
     };
-    
+
     // Send logs to the specified logs URL
     sendLogs(logs_url, logs_username, access_token, logs);
 
@@ -56,16 +56,16 @@ export default function monitor_v1(openai, options = {}) {
     const metrics = [
       // Metric to track the number of completion tokens used in the response
       `openai,job=integrations/openai,source=node_chatv1,model=${response.model} completionTokens=${response.usage.completion_tokens}`,
-    
+
       // Metric to track the number of prompt tokens used in the response
       `openai,job=integrations/openai,source=node_chatv1,model=${response.model} promptTokens=${response.usage.prompt_tokens}`,
-    
+
       // Metric to track the total number of tokens used in the response
       `openai,job=integrations/openai,source=node_chatv1,model=${response.model} totalTokens=${response.usage.total_tokens}`,
-    
+
       // Metric to track the duration of the API request and response cycle
       `openai,job=integrations/openai,source=node_chatv1,model=${response.model} requestDuration=${duration}`,
-    
+
       // Metric to track the usage cost based on the model and token usage
       `openai,job=integrations/openai,source=node_chatv1,model=${response.model} usageCost=${cost}`,
     ];
@@ -74,11 +74,8 @@ export default function monitor_v1(openai, options = {}) {
     .catch((error) => {
       console.error(error.message);
     });
-    
 
     // Return original response
     return response;
-
   };
-
 }
