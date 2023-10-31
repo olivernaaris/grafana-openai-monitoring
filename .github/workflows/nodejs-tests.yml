@@ -10,11 +10,11 @@ on:
     - cron: '*/180 * * * *'
 
 env:
-  PROMETHEUS_URL: ${{ secrets.PROMETHEUS_URL }}
-  LOKI_URL: ${{ secrets.LOKI_URL }}
-  PROMETHEUS_USERNAME: ${{ secrets.PROMETHEUS_USERNAME }}
-  LOKI_USERNAME: ${{ secrets.LOKI_USERNAME }}
-  GRAFANA_CLOUD_ACCESS_TOKEN: ${{ secrets.GRAFANA_CLOUD_ACCESS_TOKEN }}
+  METRICS_URL: ${{ secrets.PROMETHEUS_URL }}
+  LOGS_URL: ${{ secrets.LOKI_URL }}
+  METRICS_USERNAME: ${{ secrets.PROMETHEUS_USERNAME }}
+  LOGS_USERNAME: ${{ secrets.LOKI_USERNAME }}
+  ACCESS_TOKEN: ${{ secrets.GRAFANA_CLOUD_ACCESS_TOKEN }}
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 jobs:

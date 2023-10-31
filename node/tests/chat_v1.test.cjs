@@ -8,7 +8,7 @@ describe('chat_v1 Tests', () => {
   before(async () => {
     // Initialize OpenAI client
     openai = new OpenAI({
-      apiKey: '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',
+      apiKey: process.env.OPENAI_API_KEY,
     });
 
     const monitoringOptions = {
