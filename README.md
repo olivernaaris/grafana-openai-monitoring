@@ -14,14 +14,14 @@
 ## Installation
 
 ### Python Library
-You can install the Python library using pip:
+You can install the [Python library](https://pypi.org/project/grafana-openai-monitoring/) using pip:
 
 ```bash
 pip install grafana-openai-monitoring
 ```
 
 ### NPM Package
-You can install the JavaScript library using npm:
+You can install the [NPM Package](https://www.npmjs.com/package/grafana-openai-monitoring) using npm:
 
 ```bash
 npm install grafana-openai-monitoring
@@ -30,7 +30,7 @@ npm install grafana-openai-monitoring
 ## Usage
 
 ### Python
-The Python library provides decorators to monitor chat completions and Completions endpoints of the OpenAI API. It automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
+The [Python library](https://pypi.org/project/grafana-openai-monitoring/) provides decorators to monitor chat completions and Completions endpoints of the OpenAI API. It automatically tracks API calls and sends metrics and logs to the specified Grafana Cloud endpoints.
 
 Here's how to set it up:
 
@@ -57,7 +57,7 @@ print(response)
 ```
 
 ## JavaScript
-The NPM Package provides functions to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to the specified Grafana Cloud endpoints.
+The [NPM Package](https://www.npmjs.com/package/grafana-openai-monitoring) provides functions to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to the specified Grafana Cloud endpoints.
 
 Here's how to set it up:
 
@@ -110,4 +110,3 @@ After configuring the parameters, the monitored API function will automatically 
 
 ## License
 Both libraries are licensed under the  GPL-3.0 license. See the LICENSE files for details.
-

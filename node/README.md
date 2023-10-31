@@ -5,7 +5,7 @@
 
 [![Node.js Tests](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/nodejs-tests.yml/badge.svg?branch=main)](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/nodejs-tests.yml)
 
-`grafana-openai-monitoring` is an NPM Package that provides a way to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to **Grafana Cloud**, allowing you to track and analyze OpenAI API usage and responses.
+[grafana-openai-monitoring](https://www.npmjs.com/package/grafana-openai-monitoring) is an NPM Package that provides a way to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to **Grafana Cloud**, allowing you to track and analyze OpenAI API usage and responses.
 
 ## Installation
 You can install grafana-openai-monitoring using npm:

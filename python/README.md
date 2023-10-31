@@ -6,10 +6,10 @@
 [![Python Tests](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/python-tests.yml/badge.svg?branch=main)](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/python-tests.yml)
 [![Pylint](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/grafana/grafana-openai-monitoring/actions/workflows/pylint.yml)
 
-`grafana-openai-monitoring` is a Python library that provides a decorators to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to **Grafana Cloud**, allowing you to track and analyze OpenAI API usage and responses.
+[grafana-openai-monitoring](https://pypi.org/project/grafana-openai-monitoring/) is a Python library that provides a decorators to monitor chat completions and Completions endpoints of the OpenAI API. It facilitates sending metrics and logs to **Grafana Cloud**, allowing you to track and analyze OpenAI API usage and responses.
 
 ## Installation
-You can install grafana-openai-monitoring using pip:
+You can install [grafana-openai-monitoring](https://pypi.org/project/grafana-openai-monitoring/) using pip:
 
 ```bash
 pip install grafana-openai-monitoring
