@@ -118,4 +118,4 @@ Node.js version 16 and above
 - [OpenAI](https://pypi.org/project/openai/)
 
 ## License
-This project is licensed under the GNU License - see the [LICENSE](LICENSE.txt) for details.
+This project is licensed under the  GPL-3.0 license - see the [LICENSE](LICENSE.txt) for details.

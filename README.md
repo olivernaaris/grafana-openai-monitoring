@@ -109,5 +109,5 @@ After configuring the parameters, the monitored API function will automatically 
 - NPM Package: Node.js version 16 and above
 
 ## License
-Both libraries are licensed under the GPL License. See the LICENSE files for details.
+Both libraries are licensed under the  GPL-3.0 license. See the LICENSE files for details.
 
