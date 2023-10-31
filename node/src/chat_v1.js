@@ -9,12 +9,12 @@ export default function monitor_v1(openai, options = {}) {
     logs_username,
     access_token,
   } = options;
-  
+
   const validatedURL = check(metrics_url, logs_url, metrics_username, logs_username, access_token)
 
   // Save original method
   const originalCreate = openai.completions.create;
-  
+
   // Define wrapped method
   openai.completions.create = async function(params) {
     const start = performance.now();
