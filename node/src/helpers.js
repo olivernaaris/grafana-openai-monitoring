@@ -29,7 +29,7 @@ export function check(metrics_url, logs_url, metrics_username, logs_username, ac
       }
     }
 
-    // Ensure trailing slashes are removed from URLs
+    // Return metrics_url and logs_url without the trailing slash
     return {
       metrics_url: metrics_url.endsWith('/') ? metrics_url.slice(0, -1) : metrics_url,
       logs_url: logs_url.endsWith('/') ? logs_url.slice(0, -1) : logs_url,

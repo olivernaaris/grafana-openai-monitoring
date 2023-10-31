@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { check, calculateCost, sendMetrics, sendLogs } from './__helpers.js';
+import { check, calculateCost, sendMetrics, sendLogs } from './helpers.js';
 
 export default function monitor_v2(openai, options = {}) {
   const {
@@ -18,15 +18,15 @@ export default function monitor_v2(openai, options = {}) {
   // Define wrapped method
   openai.chat.completions.create = async function(params) {
     const start = performance.now();
-
     // Call original method
     const response = await originalMethod.call(this, params);
-
     const end = performance.now();
     const duration = end - start;
     
+    // Calculate the cost based on the response's usage
     const cost = calculateCost(params.model, response.usage.prompt_tokens, response.usage.completion_tokens);
 
+    // Prepare logs to be sent
     const logs = {
       streams: [
         {
@@ -53,7 +53,7 @@ export default function monitor_v2(openai, options = {}) {
     // Send logs to the specified logs URL
     sendLogs(logs_url, logs_username, access_token, logs);
     
-    
+    // Prepare metrics to be sent
     const metrics = [
       // Metric to track the number of completion tokens used in the response
       `openai,job=integrations/openai,source=node_chatv2,model=${response.model} completionTokens=${response.usage.completion_tokens}`,

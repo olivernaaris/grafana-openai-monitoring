@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { check, calculateCost, sendMetrics } from './__helpers.js';
+import { check, calculateCost, sendMetrics, sendLogs } from './helpers.js';
 
 export default function monitor_v1(openai, options = {}) {
   const {
@@ -18,16 +18,41 @@ export default function monitor_v1(openai, options = {}) {
   // Define wrapped method
   openai.completions.create = async function(params) {
     const start = performance.now();
-
     // Call original method
     const response = await originalCreate.call(this, params);
-
     const end = performance.now();
     const duration = end - start;
     
+    // Calculate the cost based on the response's usage
     const cost = calculateCost(params.model, response.usage.prompt_tokens, response.usage.completion_tokens);
-    console.log(`Cost: $${cost}`);
+    
+    // Prepare logs to be sent
+    const logs = {
+      streams: [
+        {
+          stream: {
+            job: 'integrations/openai',
+            prompt: params.prompt,
+            model: response.model,
+            finish_reason: response.choices[0].finish_reason,
+            prompt_tokens: response.usage.prompt_tokens.toString(),
+            completion_tokens: response.usage.completion_tokens.toString(),
+            total_tokens: response.usage.total_tokens.toString(),
+          },
+          values: [
+            [
+              (Math.floor(Date.now() / 1000) * 1000000000).toString(),
+              response.choices[0].text,
+            ],
+          ],
+        },
+      ],
+    };
+    
+    // Send logs to the specified logs URL
+    sendLogs(logs_url, logs_username, access_token, logs);
 
+    // Prepare metrics to be sent
     const metrics = [
       // Metric to track the number of completion tokens used in the response
       `openai,job=integrations/openai,source=node_chatv1,model=${response.model} completionTokens=${response.usage.completion_tokens}`,

@@ -16,10 +16,12 @@
     "OpenAI",
     "Grafana",
     "ChatGPT",
-    "GPT"
+    "GPT",
+    "observability",
+    "monitoring"
   ],
   "author": "Ishan Jain",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/grafana/grafana-openai-monitoring/issues"
   },
