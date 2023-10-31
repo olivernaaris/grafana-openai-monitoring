@@ -45,6 +45,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: node/package-lock.json
     
     - name: NPM CI
       if: steps.changed-files-specific.outputs.any_changed == 'true'
