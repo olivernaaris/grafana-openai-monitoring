@@ -1,4 +1,3 @@
-import OpenAI from 'openai';
 import { check, calculateCost, sendMetrics, sendLogs } from './helpers.js';
 
 export default function monitor_v1(openai, options = {}) {
