@@ -20,7 +20,7 @@ export default function monitor_v1(openai, options = {}) {
     // Call original method
     const response = await originalCreate.call(this, params);
     const end = performance.now();
-    const duration = end - start;
+    const duration = (end - start) / 1000;
 
     // Calculate the cost based on the response's usage
     const cost = calculateCost(params.model, response.usage.prompt_tokens, response.usage.completion_tokens);
@@ -47,6 +47,7 @@ export default function monitor_v1(openai, options = {}) {
         },
       ],
     };
+
 
     // Send logs to the specified logs URL
     sendLogs(logs_url, logs_username, access_token, logs);

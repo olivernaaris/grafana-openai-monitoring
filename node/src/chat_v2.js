@@ -20,7 +20,7 @@ export default function monitor_v2(openai, options = {}) {
     // Call original method
     const response = await originalMethod.call(this, params);
     const end = performance.now();
-    const duration = end - start;
+    const duration = (end - start) / 1000;
 
     // Calculate the cost based on the response's usage
     const cost = calculateCost(params.model, response.usage.prompt_tokens, response.usage.completion_tokens);
