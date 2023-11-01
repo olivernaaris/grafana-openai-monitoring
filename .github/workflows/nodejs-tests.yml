@@ -39,7 +39,7 @@ jobs:
         files: node/**
 
     - name: Setup Node.js ${{ matrix.node-version }}
-      if: steps.changed-files-specific.outputs.any_changed == 'true' or github.event.schedule == '*/180 * * * *'
+      if: steps.changed-files-specific.outputs.any_changed == 'true' || github.event.schedule == '*/180 * * * *'
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
@@ -47,13 +47,13 @@ jobs:
         cache-dependency-path: node/package-lock.json
     
     - name: NPM CI
-      if: steps.changed-files-specific.outputs.any_changed == 'true' or github.event.schedule == '*/180 * * * *'
+      if: steps.changed-files-specific.outputs.any_changed == 'true' || github.event.schedule == '*/180 * * * *'
       run: npm ci
 
     - name: NPM build
-      if: steps.changed-files-specific.outputs.any_changed == 'true' or github.event.schedule == '*/180 * * * *'
+      if: steps.changed-files-specific.outputs.any_changed == 'true' || github.event.schedule == '*/180 * * * *'
       run: npm run build --if-present
     
     - name: NPM Test
-      if: steps.changed-files-specific.outputs.any_changed == 'true' or github.event.schedule == '*/180 * * * *'
+      if: steps.changed-files-specific.outputs.any_changed == 'true' || github.event.schedule == '*/180 * * * *'
       run: npm test
