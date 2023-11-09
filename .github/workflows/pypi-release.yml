@@ -57,12 +57,8 @@ jobs:
     - name: Build package
       run: python -m build
     
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        packages-dir: ./python
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+    - name: Publish Package
+      run: python -m twine upload --repository testpypi dist/*  --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
 
   release:
     name: Create GitHub Release
