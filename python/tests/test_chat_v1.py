@@ -4,7 +4,7 @@ Test module for chat_v1 function.
 """
 
 import os
-import openai
+from openai import OpenAI
 from grafana_openai_monitoring import chat_v1
 
 def test_chat_v1():
@@ -23,11 +23,13 @@ def test_chat_v1():
     - GRAFANA_CLOUD_ACCESS_TOKEN
     """
 
-    openai.api_key = os.getenv("OPENAI_API_KEY")
+    client = OpenAI(
+        api_key=os.getenv("OPENAI_API_KEY"),
+    )
 
     # Apply the custom decorator to the OpenAI API function
-    openai.Completion.create = chat_v1.monitor(
-        openai.Completion.create,
+    client.completions.create = chat_v1.monitor(
+        client.completions.create,
         metrics_url=os.getenv("PROMETHEUS_URL"),
         logs_url=os.getenv("LOKI_URL"),
         metrics_username=os.getenv("PROMETHEUS_USERNAME"),
@@ -36,6 +38,6 @@ def test_chat_v1():
     )
 
     # Now any call to openai.Completion.create will be automatically tracked
-    response = openai.Completion.create(model="davinci", prompt="Hello world", max_tokens=100)
+    response = client.completions.create(model="davinci", prompt="Hello world", max_tokens=100)
 
-    assert response['object'] == 'text_completion'
+    assert response.object == 'text_completion'

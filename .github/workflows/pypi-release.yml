@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+defaults:
+  run:
+    working-directory: ./python
+
 jobs:
   publish:
     name: Publish Package to PYPI
@@ -56,6 +60,7 @@ jobs:
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
+        packages-dir: python/
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}
 
@@ -63,6 +68,7 @@ jobs:
     name: Create GitHub Release
     runs-on: ubuntu-latest
     needs: [publish]
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -70,4 +76,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "${{ github.event.inputs.version }}"
+          tag_name: "python-${{ github.event.inputs.version }}"
