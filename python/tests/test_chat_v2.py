@@ -25,7 +25,7 @@ def test_chat_v2():
 
     client = OpenAI(
         api_key=os.getenv("OPENAI_API_KEY"),
-    )  
+    )
 
     # Apply the custom decorator to the OpenAI API function
     client.chat.completions.create = chat_v2.monitor(
