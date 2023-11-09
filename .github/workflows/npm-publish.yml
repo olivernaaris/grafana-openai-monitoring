@@ -77,4 +77,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: "js-${{ github.event.inputs.version }}"
+          tag_name: "node-${{ github.event.inputs.version }}"
