@@ -49,4 +49,4 @@ def test_chat_v2():
                                                 ]
                                             )
 
-    assert response['object'] == 'chat.completion'
+    assert response.object == 'chat.completion'
