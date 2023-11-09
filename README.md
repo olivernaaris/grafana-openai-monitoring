@@ -35,15 +35,16 @@ The [Python library](https://pypi.org/project/grafana-openai-monitoring/) provid
 Here's how to set it up:
 
 ```python
-import openai
+from openai import OpenAI
 from grafana_openai_monitoring import chat_v2
 
-# Set your OpenAI API key
-openai.api_key = "YOUR_OPENAI_API_KEY"
+client = OpenAI(
+    api_key="YOUR_OPENAI_API_KEY",
+)
 
 # Apply the custom decorator to the OpenAI API function
-openai.ChatCompletion.create = chat_v2.monitor(
-    openai.ChatCompletion.create,
+client.chat.completions.create = chat_v2.monitor(
+    client.chat.completions.create,
     metrics_url="YOUR_PROMETHEUS_METRICS_URL",
     logs_url="YOUR_LOKI_LOGS_URL",
     metrics_username="YOUR_METRICS_USERNAME",
@@ -51,8 +52,8 @@ openai.ChatCompletion.create = chat_v2.monitor(
     access_token="YOUR_ACCESS_TOKEN"
 )
 
-# Now any call to openai.ChatCompletion.create will be automatically tracked
-response = openai.ChatCompletion.create(model="gpt-4", max_tokens=100, messages=[{"role": "user", "content": "What is Grafana?"}])
+# Now any call to client.chat.completions.create will be automatically tracked
+response = client.chat.completions.create(model="gpt-4", max_tokens=100, messages=[{"role": "user", "content": "What is Grafana?"}])
 print(response)
 ```
 
