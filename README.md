@@ -1,4 +1,4 @@
-# OpenAI Monitoring: Monitor OpenAI API Usage with Grafana Cloud
+# Monitor OpenAI API Usage with Grafana Cloud
 
 [![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?&logo=grafana&logoColor=white)](https://grafana.com)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/grafana/grafana-openai-monitoring)](https://github.com/grafana/grafana-openai-monitoring/tags)
