@@ -80,7 +80,7 @@ const monitoringOptions = {
 
 chat_v2.monitor(openai, monitoringOptions);
 
-// Now any call to openai.ChatCompletion.create will be automatically tracked
+// Now any call to openai.chat.completions.create will be automatically tracked
 async function main() {
   const completion = await openai.completions.create({
     model: 'gpt-4',

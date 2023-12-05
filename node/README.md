@@ -46,9 +46,9 @@ chat_v2.monitor(openai, {
   access_token: 'YOUR_ACCESS_TOKEN',
 });
 
-// Now any call to openai.ChatCompletion.create will be automatically tracked
+// Now any call to openai.chat.completions.create will be automatically tracked
 async function main() {
-  const completion = await openai.completions.create({
+  const completion = await openai.chat.completions.create({
     model: 'gpt-4',
     max_tokens: 100,
     messages: [{ role: 'user', content: 'What is Grafana?' }],
@@ -82,7 +82,7 @@ chat_v1.monitor(openai, {
   access_token: 'YOUR_ACCESS_TOKEN',
 });
 
-// Now any call to openai.Completion.create will be automatically tracked
+// Now any call to openai.completions.create will be automatically tracked
 async function main() {
   const completion = await openai.completions.create({
     model: 'davinci',
