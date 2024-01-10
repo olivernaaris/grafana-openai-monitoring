@@ -8,13 +8,10 @@ API usage and responses.
 """
 
 import time
-import inspect
-import functools
-from openai import OpenAI, AsyncOpenAI
 from .__handlers import __send_metrics, __send_logs, __calculate_cost, __check
 
 # Decorator function to monitor chat completion
-def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access_token, use_async=False): # pylint: disable=too-many-arguments
+def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access_token, use_async=False): # pylint: disable=too-many-arguments, line-too-long
     """
     A decorator function to monitor chat completions using the OpenAI API.
 
@@ -141,6 +138,7 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
     def wrapper(*args, **kwargs):
         if use_async is True:
             return async_wrapper(*args, **kwargs)
+        #pylint: disable=no-else-return
         else:
             start_time = time.time()
             response = func(*args, **kwargs)
