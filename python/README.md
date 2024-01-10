@@ -38,7 +38,7 @@ client = OpenAI(
     api_key="YOUR_OPENAI_API_KEY",
 )
 
-# Apply the custom decorator to the OpenAI API function
+# Apply the custom decorator to the OpenAI API function. To use with AsyncOpenAI, Pass `use_async` = True in this function.
 client.chat.completions.create = chat_v2.monitor(
     client.chat.completions.create,
     metrics_url="YOUR_PROMETHEUS_METRICS_URL",  # Example: "https://prometheus.grafana.net/api/prom"
