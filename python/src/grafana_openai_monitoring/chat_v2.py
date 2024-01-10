@@ -138,7 +138,7 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
     def wrapper(*args, **kwargs):
         if use_async is True:
             return async_wrapper(*args, **kwargs)
-        #pylint: disable=no-else-return
+        # pylint: disable=no-else-return
         else:
             start_time = time.time()
             response = func(*args, **kwargs)
