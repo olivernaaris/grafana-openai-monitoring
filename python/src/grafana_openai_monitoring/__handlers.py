@@ -18,9 +18,8 @@ Functions:
     __send_logs(logs_url, metrics_username, access_token, metrics):
         Send logs to the specified Loki URL.
 """
-
-import requests
 import logging
+import requests
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.ERROR)
@@ -96,9 +95,8 @@ def __send_logs(logs_url, logs_username, access_token, logs):
                                  timeout=60
                                 )
         response.raise_for_status()  # Raise an exception for non-2xx status codes
-        return response
     except requests.exceptions.RequestException as err:
-        logger.error(f"Error sending Logs: {err}")
+        logger.error("Error sending Logs:", err)
 
 # Function to send metrics to the specified metrics URL
 def __send_metrics(metrics_url, metrics_username, access_token, metrics):
@@ -111,6 +109,5 @@ def __send_metrics(metrics_url, metrics_username, access_token, metrics):
                                  timeout=60
                             )
         response.raise_for_status()  # Raise an exception for non-2xx status codes
-        return response
     except requests.exceptions.RequestException as err:
-        logger.error(f"Error sending Metrics: {err}")
+        logger.error("Error sending Metrics:", err)
