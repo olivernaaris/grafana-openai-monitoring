@@ -20,6 +20,10 @@ Functions:
 """
 
 import requests
+import logging
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.ERROR)
 
 # Function to check if all required arguments are provided and modify metrics and logs URLs
 def __check(metrics_url, logs_url, metrics_username, logs_username, access_token):
@@ -94,7 +98,7 @@ def __send_logs(logs_url, logs_username, access_token, logs):
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         return response
     except requests.exceptions.RequestException as err:
-        raise requests.exceptions.RequestException(f"Error sending Logs: {err}")
+        logger.error(f"Error sending Logs: {err}")
 
 # Function to send metrics to the specified metrics URL
 def __send_metrics(metrics_url, metrics_username, access_token, metrics):
@@ -109,4 +113,4 @@ def __send_metrics(metrics_url, metrics_username, access_token, metrics):
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         return response
     except requests.exceptions.RequestException as err:
-        raise requests.exceptions.RequestException(f"Error sending Metrics: {err}")
+        logger.error(f"Error sending Metrics: {err}")
