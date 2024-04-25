@@ -12,8 +12,9 @@ import time
 from .__handlers import __send_metrics, __send_logs, __calculate_cost, __check
 
 # Decorator function to monitor chat completion
+# pylint: disable=too-many-arguments
 def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access_token,
-            disable_content=False, environment="default"): # pylint: disable=too-many-arguments
+            disable_content=False, environment="default"):
     """
     A decorator function to monitor chat completions using the OpenAI API.
 

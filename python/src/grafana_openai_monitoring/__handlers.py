@@ -96,7 +96,7 @@ def __send_logs(logs_url, logs_username, access_token, logs):
                                 )
         response.raise_for_status()  # Raise an exception for non-2xx status codes
     except requests.exceptions.RequestException as err:
-        logger.error("Error sending Logs:", err)
+        logger.error("Error sending Logs: %s", err)
 
 # Function to send metrics to the specified metrics URL
 def __send_metrics(metrics_url, metrics_username, access_token, metrics):
@@ -110,4 +110,4 @@ def __send_metrics(metrics_url, metrics_username, access_token, metrics):
                             )
         response.raise_for_status()  # Raise an exception for non-2xx status codes
     except requests.exceptions.RequestException as err:
-        logger.error("Error sending Metrics:", err)
+        logger.error("Error sending Metrics: %s", err)
