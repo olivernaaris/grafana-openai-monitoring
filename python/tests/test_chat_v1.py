@@ -39,6 +39,6 @@ def test_chat_v1():
 
     # Now any call to openai.Completion.create will be automatically tracked
     response = client.completions.create(model="gpt-3.5-turbo-instruct",
-                                         prompt="Hello world", max_tokens=100)
+                                         prompt="Hello world", max_tokens=1)
 
     assert response.object == 'text_completion'
