@@ -12,7 +12,9 @@ import time
 from .__handlers import __send_metrics, __send_logs, __calculate_cost, __check
 
 # Decorator function to monitor chat completion
-def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access_token): # pylint: disable=too-many-arguments
+# pylint: disable=too-many-arguments
+def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access_token,
+            disable_content=False, environment="default"):
     """
     A decorator function to monitor chat completions using the OpenAI API.
 
@@ -72,7 +74,8 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
             {
                     "stream": {
                         "job": "integrations/openai", 
-                        "prompt": prompt, 
+                        "prompt": prompt,
+                        "environment": environment,
                         "model": response.model, 
                         "finish_reason": response.choices[0].finish_reason,
                         "prompt_tokens": str(response.usage.prompt_tokens), 
@@ -90,38 +93,39 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
             ]
         }
 
-        # Send logs to the specified logs URL
-        __send_logs(logs_url=logs_url,
-                    logs_username=logs_username,
-                    access_token=access_token,
-                    logs=logs
-        )
+        if disable_content is True:
+            # Send logs to the specified logs URL
+            __send_logs(logs_url=logs_url,
+                        logs_username=logs_username,
+                        access_token=access_token,
+                        logs=logs
+            )
 
         # Prepare metrics to be sent
         metrics = [
             # Metric to track the number of completion tokens used in the response
             f'openai,job=integrations/openai,'
-            f'source=python_chatv1,model={response.model} '
+            f'source=python_chatv1,model={response.model},environment={environment} '
             f'completionTokens={response.usage.completion_tokens}',
 
             # Metric to track the number of prompt tokens used in the response
             f'openai,job=integrations/openai,'
-            f'source=python_chatv1,model={response.model} '
+            f'source=python_chatv1,model={response.model},environment={environment} '
             f'promptTokens={response.usage.prompt_tokens}',
 
             # Metric to track the total number of tokens used in the response
             f'openai,job=integrations/openai,'
-            f'source=python_chatv1,model={response.model} '
+            f'source=python_chatv1,model={response.model},environment={environment} '
             f'totalTokens={response.usage.total_tokens}',
 
             # Metric to track the duration of the API request and response cycle
             f'openai,job=integrations/openai,'
-            f'source=python_chatv1,model={response.model} '
+            f'source=python_chatv1,model={response.model},environment={environment} '
             f'requestDuration={duration}',
 
             # Metric to track the usage cost based on the model and token usage
             f'openai,job=integrations/openai,'
-            f'source=python_chatv1,model={response.model} '
+            f'source=python_chatv1,model={response.model},environment={environment} '
             f'usageCost={cost}',
         ]
 
