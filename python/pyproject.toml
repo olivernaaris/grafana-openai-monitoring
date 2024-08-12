@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "grafana-openai-monitoring"
-version = "${{ github.event.inputs.version }}"
+version = "0.0.100"
 description = "Library to monitor your OpenAI usage and send metrics and logs to Grafana Cloud"
 authors = ["Ishan Jain <ishan.jain@grafana.com>"]
 repository = "https://github.com/grafana/grafana-openai-monitoring"
