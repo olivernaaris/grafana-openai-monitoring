@@ -45,7 +45,7 @@ def monitor(func, metrics_url, logs_url, metrics_username, logs_username, access
 
     async def async_wrapper(*args, **kwargs):
         start_time = time.time()
-        response = func(*args, **kwargs)
+        response = await func(*args, **kwargs)
         end_time = time.time()
         duration = end_time - start_time
 
